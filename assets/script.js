@@ -1,3 +1,27 @@
+function celsiusToKelvin(celsius) {
+  return celsius + 273;
+}
+
+function celsiusToFahrenheit(celsius) {
+  return (celsius * 9) / 5 + 32;
+}
+
+function farenheitToCelsius(farenheit) {
+  return ((farenheit - 32) * 5) / 9;
+}
+
+function farenheitToKelvin(farenheit) {
+  return ((farenheit - 32) * 5) / 9 + 273;
+}
+
+function kelvinToCelsius(kelvin) {
+  return kelvin - 273;
+}
+
+function kelvinToFahrenheit(kelvin) {
+  return (9 * (kelvin - 273)) / 5 + 32;
+}
+
 function temperatureConverter(temp) {
   try {
     if (typeof temp !== "string") {
@@ -22,8 +46,8 @@ function temperatureConverter(temp) {
     }
 
     if (scale === "c") {
-      let farenheit = 9 * (tempValue / 5) + 32;
-      let kelvin = tempValue + 273;
+      let farenheit = celsiusToFahrenheit(tempValue);
+      let kelvin = celsiusToKelvin(tempValue);
 
       return {
         celsius: tempValue,
@@ -32,8 +56,8 @@ function temperatureConverter(temp) {
       };
     }
     if (scale === "f") {
-      let celsius = (5 * (tempValue - 32)) / 9;
-      let kelvin = (5 * (tempValue - 32)) / 9 + 273;
+      let celsius = farenheitToCelsius(tempValue);
+      let kelvin = farenheitToKelvin(tempValue);
 
       return {
         celsius,
@@ -42,8 +66,8 @@ function temperatureConverter(temp) {
       };
     }
     if (scale === "k") {
-      let celsius = tempValue - 273;
-      let farenheit = (9 * (tempValue - 273)) / 5 + 32;
+      let celsius = kelvinToCelsius(tempValue);
+      let farenheit = kelvinToFahrenheit(tempValue);
 
       return {
         celsius,
